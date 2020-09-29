@@ -2,41 +2,36 @@ import { StyleSheet } from "react-native";
 import { Dimensions } from 'react-native';
 
 export default StyleSheet.create({
-    containerStyle: {
-        // flex: 1,
-        // justifyContent: "flex-end",
+    cardStyle: {
+        backgroundColor: "#000",
         alignItems: "center",
-        // backgroundColor: "rgb(255, 0, 0)",
         padding: 2,
-        marginTop: 100,
+        marginTop: 30,
         width: 335,
         height: 185,
         borderRadius: 15,
+        overflow: "hidden",
+        alignItems: "center",
+        padding: 2,
+        borderRadius: 15,
+        borderColor: "rgba(255,255,255,0.2)",
+        elevation: 0,
+        borderWidth:1,
         overflow: "hidden"
     },
 
-    logoStyle: {
-        height: 36,
-        width: 36,
-        marginTop: 9,
-        marginStart: 14,
-    },
-
     priceStyle: {
+        color: "#fff",
         marginTop: 10,
-        fontSize: 15,
+        fontSize: 18,
         marginEnd: 15,
     },
 
-    nameStyle: {
-        fontSize: 15,
-        // fontFamily: "RawlineSemiBold"
-        marginLeft: 12,
-        marginTop: 16
-        
+    cell: {
+        color: "#646464"
     },
 
-    summaryView: {
+    graphCard: {
         flexDirection: "row", 
         flex:2, 
         width: 343,

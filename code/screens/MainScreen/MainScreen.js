@@ -1,13 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import CryptoCard from "../../components/CryptoCard/CryptoCard";
+import { View, SafeAreaView } from 'react-native';
 import CryptoCardsList from "../../components/CryptoCardsList/CryptoCardsList";
-// import NavBar from "../../components/NavBar/NavBar";
+import styles from "./MainScreen.styles"
+import AppBar from "../../components/AppBar/AppBar"
 
 
 
-export default function MainScreen() {
+export default function MainScreen(props) {
 
   const getAssets = "https://assets-api.sylo.io/v2/all?take=30&has_history_only=true"
 
@@ -17,14 +16,20 @@ export default function MainScreen() {
   
 
   useEffect(() => {
-    
-    fetch(getAssets).then(response => response.json())
+    const abortController = new AbortController()
+    const signal = abortController.signal
+
+    fetch(getAssets, {signal: signal})
+    .then(response => response.json())
     .then(json => {
         setAssets(json)
         setLoading(false);
     })
     .catch(e => console.log(e))
 
+    return function cleanup() {
+      abortController.abort()
+    }
   })
 
   if (loading) {
@@ -32,30 +37,14 @@ export default function MainScreen() {
   } else {
     return ( 
       <SafeAreaView style={styles.container}>
-        {/* <View style={{alignItems:"center", flex: 2}}>
-          <Text style={{color:"rgb(255,255,255)"}}> Tracker </Text>
-        </View> */}
-        {/* <View style={{flex:2}}>
-          <NavBar />
-        </View> */}
         
+        <AppBar screen="main"/>
 
         <View style={{flex:3}}>
-          <CryptoCardsList assets={assets}/>
+          <CryptoCardsList navigation={props.navigation} assets={assets}/>
         </View>
       </SafeAreaView>  
     );
   }
 
 }
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -3,15 +3,16 @@ import { Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     containerStyle: {
-        // flex: 1,
-        // justifyContent: "flex-end",
+        backgroundColor: "rgb(0,0,0)",
         alignItems: "center",
-        // backgroundColor: "rgb(255, 0, 0)",
         padding: 2,
-        margin: 4,
+        margin: 8,
         width: 343,
         height: 140,
         borderRadius: 15,
+        borderColor: "rgba(255,255,255,0.2)",
+        elevation: 0,
+        borderWidth:1,
         overflow: "hidden"
     },
 
@@ -23,12 +24,14 @@ export default StyleSheet.create({
     },
 
     priceStyle: {
+        color: "#fff",
         marginTop: 10,
         fontSize: 15,
         marginEnd: 15,
     },
 
     nameStyle: {
+        color: "#fff",
         fontSize: 15,
         // fontFamily: "RawlineSemiBold"
         marginLeft: 12,

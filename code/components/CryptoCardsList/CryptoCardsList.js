@@ -15,7 +15,8 @@ export default class CryptoCardsList extends React.Component {
         this.state = {
           assets: props.assets,
           assetsHistory: [],
-          loading: true
+          loading: true,
+          navigation: props.navigation
          };
 
     }
@@ -28,7 +29,7 @@ export default class CryptoCardsList extends React.Component {
             <View>
                 <FlatList data={this.state.assets} 
                 renderItem= {({item}) => (
-                    <CryptoCard name={item.name} logo={item.icon_address} id={item.id} />
+                    <CryptoCard item={item} navigation={this.state.navigation}/>
                 )
                 } />
             </View>
